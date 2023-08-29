@@ -7,7 +7,7 @@
 
     <name>Launch Review</name>
     <description>Cordova/Phonegap plugin for iOS and Android to assist in leaving user reviews/ratings in the App Stores.</description>
-    <author>Dave Alden</author>
+    <author>Dave Alden / Daan Pepping</author>
 
     <repo>https://github.com/DaanPepping/cordova-plugin-launch-review-2023.git</repo>
     <issue>https://github.com/DaanPepping/cordova-plugin-launch-review-2023/issues</issue>

@@ -74,7 +74,11 @@
     @try {
         if ([SKStoreReviewController class]) {
             self.ratingRequestCallbackId = command.callbackId;
-            [SKStoreReviewController requestReview];
+            if (@available(iOS 14.0, *)) { 
+                [SKStoreReviewController requestReviewInScene:self.view.window.windowScene]; 
+            } else if (@available(iOS 10.3, *)) { 
+                [SKStoreReviewController requestReview]; 
+            } 
             CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"requested"];
             [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];

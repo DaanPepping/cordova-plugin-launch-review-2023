@@ -2,15 +2,15 @@
 <plugin
         xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-launch-review"
-        version="4.0.1">
+        id="cordova-plugin-launch-review-2023"
+        version="4.0.2">
 
     <name>Launch Review</name>
     <description>Cordova/Phonegap plugin for iOS and Android to assist in leaving user reviews/ratings in the App Stores.</description>
     <author>Dave Alden</author>
 
-    <repo>https://github.com/dpa99c/cordova-launch-review.git</repo>
-    <issue>https://github.com/dpa99c/cordova-launch-review/issues</issue>
+    <repo>https://github.com/DaanPepping/cordova-plugin-launch-review-2023.git</repo>
+    <issue>https://github.com/DaanPepping/cordova-plugin-launch-review-2023/issues</issue>
 
     <keywords>ecosystem:cordova,cordova,phonegap,ios,android,review,rating</keywords>
 

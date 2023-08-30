@@ -43,8 +43,8 @@ LaunchReview.prototype.launch = function (success, error, appId) {
  * Will be passed a single argument which is the error message string.
  */
 LaunchReview.prototype.rating = function (success, error) {
-  if (LaunchReview.isRatingSupported()) {
-    cordova.exec(success, error, "LaunchReview", "rating", []);
+  if (LaunchReview.prototype.isRatingSupported()) {
+    cordova.exec(success, error, "LaunchReview", "rating");
   } else {
     error("Rating dialog requires iOS 10.3+");
   }

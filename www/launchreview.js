@@ -22,7 +22,7 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-var LaunchReview = {};
+var LaunchReview = function () {};
 
 /**
  * Launches App Store on current platform in order to leave a review for given app
@@ -32,8 +32,8 @@ var LaunchReview = {};
  * @param {string} appId (optional) - ID of app to open in App Store.
  * If not specified, the ID for the current app will be used.
  */
-LaunchReview.launch = function(success, error, appId) {
-    cordova.exec(success, error, 'LaunchReview', 'launch', [appId]);
+LaunchReview.prototype.launch = function (success, error, appId) {
+  cordova.exec(success, error, "LaunchReview", "launch", [appId]);
 };
 
 /**
@@ -42,12 +42,12 @@ LaunchReview.launch = function(success, error, appId) {
  * @param {function} error (optional) - function to be called on error during plugin call.
  * Will be passed a single argument which is the error message string.
  */
-LaunchReview.rating = function(success, error) {
-    if(LaunchReview.isRatingSupported()){
-        cordova.exec(success, error, 'LaunchReview', 'rating', []);
-    }else{
-        error("Rating dialog requires iOS 10.3+");
-    }
+LaunchReview.prototype.rating = function (success, error) {
+  if (LaunchReview.isRatingSupported()) {
+    cordova.exec(success, error, "LaunchReview", "rating", []);
+  } else {
+    error("Rating dialog requires iOS 10.3+");
+  }
 };
 
 /**
@@ -55,8 +55,19 @@ LaunchReview.rating = function(success, error) {
  * Will return true if current platform is Android or iOS 10.3 or above.
  * @returns {boolean} true if the current platform supports in-app ratings dialog
  */
-LaunchReview.isRatingSupported = function(){
-    return cordova.platformId === 'android' || (cordova.platformId === 'ios' && parseFloat(device.version) >= 10.3)
+LaunchReview.prototype.isRatingSupported = function () {
+  return (
+    cordova.platformId === "android" ||
+    (cordova.platformId === "ios" && parseFloat(device.version) >= 10.3)
+  );
 };
 
-module.exports = LaunchReview;
+// Plug in to Cordova
+cordova.addConstructor(function () {
+  if (!window.Cordova) {
+    window.Cordova = cordova;
+  }
+
+  if (!window.plugins) window.plugins = {};
+  window.plugins.LaunchReview = new LaunchReview();
+});

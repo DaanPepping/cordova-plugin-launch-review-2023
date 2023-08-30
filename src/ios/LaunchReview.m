@@ -75,7 +75,7 @@
         if ([SKStoreReviewController class]) {
             self.ratingRequestCallbackId = command.callbackId;
             if (@available(iOS 14.0, *)) { 
-                [SKStoreReviewController requestReviewInScene:self.view.window.windowScene]; 
+                [SKStoreReviewController requestReviewInScene:self.viewController.view.window.windowScene]; 
             } else if (@available(iOS 10.3, *)) { 
                 [SKStoreReviewController requestReview]; 
             } 
